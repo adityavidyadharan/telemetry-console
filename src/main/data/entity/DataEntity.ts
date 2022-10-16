@@ -4,13 +4,13 @@ import { DataModelType } from '../models/DataModel';
 @Entity({ name: 'Data' })
 class DataEntity {
   @PrimaryGeneratedColumn()
-  id: number;
+  index: number;
 
   @Column({ name: 'date' })
   time: Date;
 
   @Column()
-  message_id: string;
+  id: string;
 
   @Column()
   message: string;

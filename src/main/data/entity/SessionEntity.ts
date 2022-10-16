@@ -1,17 +1,10 @@
-import {
-  Entity,
-  PrimaryGeneratedColumn,
-  Column,
-  OneToOne,
-  JoinColumn,
-} from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 import { SessionModelType } from '../models/SessionModel';
-import MetadataEntity from './SessionDataEntity';
 
 @Entity({ name: 'Sessions' })
 class SessionEntity {
   @PrimaryGeneratedColumn()
-  id: number;
+  index: number;
 
   @Column()
   name: string;
@@ -22,9 +15,8 @@ class SessionEntity {
   @Column()
   date: Date;
 
-  @OneToOne((_type) => MetadataEntity)
-  @JoinColumn()
-  information: MetadataEntity;
+  @Column()
+  notes: string;
 
   constructor(model: SessionModelType) {
     Object.assign(this, model);
