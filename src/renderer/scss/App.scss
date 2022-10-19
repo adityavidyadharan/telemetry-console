@@ -1,0 +1,35 @@
+@use './utils/button-variants.scss';
+@use './utils/colors.scss';
+
+body {
+  position: relative;
+  color: colors.$jet;
+  background: colors.$persian-green;
+  font-family: sans-serif;
+  overflow-y: hidden;
+}
+
+.centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-btn-footer {
+  float: right;
+  margin-bottom: 20px;
+}
+
+.home-btn {
+  margin: 5px;
+  margin-right: 10vw;
+}
+
+.btn-primary {
+  @include button-variants.bootstrap-button(colors.$middle-blue-green);
+}
+
+h1 {
+  margin-top: 10px;
+  text-align: center;
+}

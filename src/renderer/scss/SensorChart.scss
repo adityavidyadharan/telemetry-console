@@ -1,0 +1,17 @@
+.dropdown button {
+  margin: 5px;
+  margin-left: 10vw;
+  min-width: 5em;
+  display: flex;
+}
+
+.dropdown-menu {
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.div {
+  display: flex;
+  flex-direction: column;
+}
+
