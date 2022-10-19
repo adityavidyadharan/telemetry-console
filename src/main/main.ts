@@ -15,6 +15,7 @@ import log from 'electron-log';
 import AppDataSource from './data/data-source';
 import { resolveHtmlPath, setLog } from './util';
 import MenuBuilder from './menu';
+import './ipc';
 
 class AppUpdater {
   constructor() {

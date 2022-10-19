@@ -19,3 +19,13 @@ contextBridge.exposeInMainWorld('electron', {
     },
   },
 });
+
+contextBridge.exposeInMainWorld('data', {
+  ipcRenderer: {
+    getSensor: (message: string, label: string) =>
+      ipcRenderer.invoke('data:getSensor', message, label),
+    getDistinctMessages: () => ipcRenderer.invoke('data:getDistinctMessages'),
+    getDistinctLabels: (message: string) =>
+      ipcRenderer.invoke('data:getDistinctLabels', message),
+  },
+});
