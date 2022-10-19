@@ -8,7 +8,6 @@ const AppDataSource = new DataSource({
   type: 'sqlite',
   database: `${getDataPath()}/UserData.sqlite3`, // TODO use UserData folder
   entities: [DataEntity, SessionEntity],
-  synchronize: true, // TODO might need to remove for production
 });
 
 export default AppDataSource;
