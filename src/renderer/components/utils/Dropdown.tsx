@@ -1,15 +1,15 @@
 import { useEffect, useState } from 'react';
 import { Dropdown as BDropdown } from 'react-bootstrap';
 
-// import '../../scss/App.scss';
-
 interface IBDropdownProps {
+  active: boolean;
   currentValue: string;
   setCurrentValue: (value: string) => void;
   fetchContents: (callback: (store: string[]) => void) => void;
 }
 
 const Dropdown = ({
+  active,
   currentValue,
   setCurrentValue,
   fetchContents,
@@ -22,7 +22,9 @@ const Dropdown = ({
 
   return (
     <BDropdown className="dropdown">
-      <BDropdown.Toggle variant="primary">{currentValue}</BDropdown.Toggle>
+      <BDropdown.Toggle variant="primary" className={active ? '' : 'disabled'}>
+        {currentValue}
+      </BDropdown.Toggle>
 
       <BDropdown.Menu>
         {items.map((item: string) => {

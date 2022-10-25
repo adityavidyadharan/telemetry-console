@@ -4,21 +4,17 @@ import Dropdown from './utils/Dropdown';
 
 import '../scss/SensorChart.scss';
 
-type Senor = {
-  message: string;
-  label: string;
-};
-
 const SensorChart = () => {
-  const [sensor, setSensor] = useState<Senor>();
   const [message, setMessage] = useState<string>('Message category');
   const [label, setLabel] = useState<string>('Data label');
+  const [active, setActive] = useState<boolean>(false);
 
   const getMessages = async (store: (contents: string[]) => void) => {
     store(await window.data.ipcRenderer.getDistinctMessages());
   };
   const setMessageDropdown = async (m: string) => {
     setMessage(m);
+    setActive(true);
     setLabel('Data label');
   };
   const getLabels = async (store: (contents: string[]) => void) => {
@@ -29,6 +25,7 @@ const SensorChart = () => {
     <div className="d-flex justify-content-center">
       <div>
         <Dropdown
+          active
           currentValue={message}
           setCurrentValue={setMessageDropdown}
           fetchContents={getMessages}
@@ -36,6 +33,7 @@ const SensorChart = () => {
       </div>
       <div>
         <Dropdown
+          active={active}
           currentValue={label}
           setCurrentValue={setLabel}
           fetchContents={getLabels}
