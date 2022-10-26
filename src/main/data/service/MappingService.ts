@@ -5,8 +5,10 @@ import log from 'electron-log';
 import { getAssetPath } from '../../util';
 
 enum Charts {
-  LINE,
-  HEX,
+  LINE = 'line',
+  HEX = 'hex',
+  DISCRETE = 'discrete',
+  BOOLEAN = 'boolean',
 }
 
 export interface Label {
@@ -29,13 +31,17 @@ const schema = {
           properties: {
             live: {
               type: 'array',
+              items: {
+                type: 'string',
+                enum: Object.values(Charts) as Charts[],
+              },
             },
             static: {
               type: 'string',
+              enum: Object.values(Charts),
             },
           },
           additionalProperties: false,
-          required: ['live', 'static'],
         },
       },
     },
@@ -53,7 +59,6 @@ export default class MappingService {
   constructor() {
     this.schema = new Ajv().compile(schema);
     this.store = new Store<Message>();
-    this.store.clear();
     this.resource = getAssetPath('mappings.json');
     if (this.store.size === 0) {
       this.loadDefaultMapping();
