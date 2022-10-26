@@ -19,6 +19,14 @@ export function getDataPath() {
   return process.env.NODE_ENV !== 'production' ? '.' : app.getPath('userData');
 }
 
+const RESOURCES_PATH = app.isPackaged
+  ? path.join(process.resourcesPath, 'assets')
+  : path.join(__dirname, '../../assets');
+
+export const getAssetPath = (...paths: string[]): string => {
+  return path.join(RESOURCES_PATH, ...paths);
+};
+
 export function setLog() {
   log.transports.file.resolvePath = () =>
     path.join(getDataPath(), 'logs/main.log');
