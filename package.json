@@ -106,15 +106,20 @@
     }
   },
   "dependencies": {
+    "@types/react-json-editor-ajrm": "^2.5.3",
+    "ajv": "^8.11.0",
     "bootstrap": "^5.2.2",
     "csv-parser": "^3.0.0",
     "electron-debug": "^3.2.0",
     "electron-log": "^4.4.8",
+    "electron-store": "^8.1.0",
     "electron-updater": "^5.2.3",
+    "json-source-map": "^0.6.1",
     "plotly.js": "^2.16.0",
     "react": "^18.2.0",
     "react-bootstrap": "^2.5.0",
     "react-dom": "^18.2.0",
+    "react-json-editor-ajrm": "^2.5.13",
     "react-plotly.js": "^2.6.0",
     "react-router-dom": "^6.3.0"
   },
@@ -264,7 +269,7 @@
   "electronmon": {
     "patterns": [
       "!**/**",
-      "src/main/*"
+      "src/main/**"
     ],
     "logLevel": "quiet"
   }

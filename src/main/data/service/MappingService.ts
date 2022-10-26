@@ -1,5 +1,5 @@
 import Store = require('electron-store');
-import path = require('path');
+import fs = require('fs');
 import Ajv, { ValidateFunction, ErrorObject } from 'ajv';
 import log from 'electron-log';
 import { getAssetPath } from '../../util';
@@ -54,19 +54,36 @@ export default class MappingService {
     this.schema = new Ajv().compile(schema);
     this.store = new Store<Message>();
     this.store.clear();
+    this.resource = getAssetPath('mappings.json');
     if (this.store.size === 0) {
       this.loadDefaultMapping();
     }
-    this.resource = getAssetPath('mappings.json');
   }
 
   private async loadDefaultMapping(): Promise<ErrorObject[] | null> {
-    const mappings = await import(getAssetPath('mappings.json'));
-    this.validateMapping(mappings);
-    const status = this.validateMapping(mappings);
+    const raw = fs.readFileSync(this.resource).toString();
+    const mapping = JSON.parse(raw);
+    log.silly('Mapping', mapping);
+    this.validateMapping(mapping);
+    const status = this.validateMapping(mapping);
     if (status !== null && status !== undefined) return status;
-    this.store.set(mappings);
+    this.store.set(mapping);
     log.info('Loaded default mapping');
+    return null;
+  }
+
+  public async getCurrentMapping() {
+    return this.store.store;
+  }
+
+  public updateMapping(mapping: Message): ErrorObject[] | null {
+    log.info('Updating mapping');
+    log.silly('Mapping', mapping);
+    const status = this.validateMapping(mapping);
+    if (status !== null && status !== undefined) return status;
+    this.store.clear();
+    this.store.set(mapping);
+    log.info('Updated mapping');
     return null;
   }
 
@@ -75,6 +92,7 @@ export default class MappingService {
       return null;
     }
     log.debug('Error in mapping');
+    log.debug(this.schema.errors);
     return this.schema.errors;
   }
 
@@ -82,5 +100,3 @@ export default class MappingService {
     return this.store.get(message)?.[label];
   }
 }
-
-new MappingService();
