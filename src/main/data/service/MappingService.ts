@@ -16,7 +16,7 @@ export interface Label {
   static: Charts;
 }
 
-export interface Message {
+export interface Mapping {
   [message: string]: { [label: string]: Label };
 }
 
@@ -49,23 +49,35 @@ const schema = {
   additionalProperties: false,
 };
 
+class ValidationError extends Error {
+  constructor(message: string, public errors: ErrorObject[]) {
+    super(message);
+    this.errors = errors;
+  }
+}
+
 export default class MappingService {
   resource: string;
 
-  store: Store<Message>;
+  store: Store<Mapping>;
 
   schema: ValidateFunction<unknown>;
 
   constructor() {
     this.schema = new Ajv().compile(schema);
-    this.store = new Store<Message>();
+    this.store = new Store<Mapping>();
     this.resource = getAssetPath('mappings.json');
     if (this.store.size === 0) {
       this.loadDefaultMapping();
     }
   }
 
-  private async loadDefaultMapping(): Promise<ErrorObject[] | null> {
+  public reset() {
+    this.store.clear();
+    this.loadDefaultMapping();
+  }
+
+  private loadDefaultMapping(): ErrorObject[] | null {
     const raw = fs.readFileSync(this.resource).toString();
     const mapping = JSON.parse(raw);
     log.silly('Mapping', mapping);
@@ -77,22 +89,23 @@ export default class MappingService {
     return null;
   }
 
-  public async getCurrentMapping() {
+  public getCurrentMapping() {
     return this.store.store;
   }
 
-  public updateMapping(mapping: Message): ErrorObject[] | null {
+  public updateMapping(mapping: Mapping): ErrorObject[] | null {
     log.info('Updating mapping');
     log.silly('Mapping', mapping);
     const status = this.validateMapping(mapping);
-    if (status !== null && status !== undefined) return status;
+    if (status !== null && status !== undefined)
+      throw new ValidationError('Invalid mapping', status);
     this.store.clear();
     this.store.set(mapping);
     log.info('Updated mapping');
     return null;
   }
 
-  public validateMapping(mapping: Message): ErrorObject[] | null | undefined {
+  public validateMapping(mapping: Mapping): ErrorObject[] | null | undefined {
     if (this.schema(mapping)) {
       return null;
     }

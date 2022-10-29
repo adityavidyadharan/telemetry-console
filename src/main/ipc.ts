@@ -26,6 +26,10 @@ ipcMain.handle('mappings:getMapping', async (_event, ...args) => {
   return new MappingService().getMapping(args[0], args[1]);
 });
 
-ipcMain.handle('mappings.validateMapping', async (_event, ...args) => {
+ipcMain.handle('mappings:validateMapping', async (_event, ...args) => {
   return new MappingService().validateMapping(args[0]);
+});
+
+ipcMain.handle('mappings:resetMapping', async () => {
+  return new MappingService().reset();
 });

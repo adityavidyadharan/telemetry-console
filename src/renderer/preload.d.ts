@@ -1,6 +1,6 @@
 import { ErrorObject } from 'ajv';
 import { DataModelType } from '../main/data/models';
-import { Mapping } from '../main/data/models/MappingModel';
+import { Mapping } from '../main/data/service/MappingService';
 import { Channels } from '../main/preload';
 
 declare global {
@@ -28,6 +28,7 @@ declare global {
         updateMapping(mapping: Mapping): Promise<void>;
         getMapping(message: string, label: string): Promise<Mapping>;
         validateMapping(mapping: Mapping): Promise<ErrorObject[]>;
+        resetMapping(): Promise<void>;
       };
     };
   }

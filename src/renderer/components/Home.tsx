@@ -5,7 +5,7 @@ const Home = () => {
   return (
     <Link to="/mappings">
       <Button variant="link" className="menu-item">
-        <span className="menu-item-text">Mappings</span>
+        <h4>Mappings</h4>
       </Button>
     </Link>
   );
