@@ -2,11 +2,12 @@ import { useEffect, useState } from 'react';
 import { Button } from 'react-bootstrap';
 import { ArrowCounterclockwise, Save2, Trash } from 'react-bootstrap-icons';
 import JSONInput from 'react-json-editor-ajrm';
-import locale from 'react-json-editor-ajrm/locale/en';
 import ReactTooltip from 'react-tooltip';
 import { Mapping } from '../../../main/data/service/MappingService';
 
 const jsonMap = require('json-source-map');
+
+const locale = require('react-json-editor-ajrm/locale/en');
 
 type Error = Partial<{
   reason: string;
