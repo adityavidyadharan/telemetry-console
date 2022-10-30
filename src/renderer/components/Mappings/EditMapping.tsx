@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Button } from 'react-bootstrap';
+import { Alert, Button } from 'react-bootstrap';
 import { ArrowCounterclockwise, Save2, Trash } from 'react-bootstrap-icons';
 import JSONInput from 'react-json-editor-ajrm';
 import ReactTooltip from 'react-tooltip';
@@ -17,6 +17,7 @@ type Error = Partial<{
 const EditMapping = () => {
   const [placeholder, setPlaceholder] = useState({});
   const [error, setError] = useState<Error>();
+  const [success, setSuccess] = useState<boolean>(false);
   const [content, setContent] = useState<Mapping>();
 
   const resetMapping = async () => {
@@ -40,6 +41,7 @@ const EditMapping = () => {
     if (content === undefined) return;
     try {
       await window.mappings.ipcRenderer.updateMapping(content);
+      setSuccess(true);
     } catch (e) {
       console.error(e);
     }
@@ -47,6 +49,8 @@ const EditMapping = () => {
 
   const verifyJSON = async (payload: any) => {
     console.debug('Verifying JSON');
+    setSuccess(false);
+    setError({});
     if (payload.error) return;
     const check = await window.mappings.ipcRenderer.validateMapping(
       payload.jsObject
@@ -72,6 +76,16 @@ const EditMapping = () => {
 
   return (
     <div>
+      <Alert
+        variant="success"
+        dismissible
+        style={{
+          visibility: success === true ? 'visible' : 'hidden',
+        }}
+        onClose={() => setSuccess(false)}
+      >
+        <Alert.Heading>Successfully saved mapping</Alert.Heading>
+      </Alert>
       <JSONInput
         id="a_unique_id"
         height="550px"
@@ -87,7 +101,11 @@ const EditMapping = () => {
         <Button onClick={discardChanges} data-tip="Discard Changes">
           <Trash />
         </Button>
-        <Button onClick={saveChanges} data-tip="Save mapping">
+        <Button
+          onClick={saveChanges}
+          data-tip="Save mapping"
+          disabled={error !== undefined}
+        >
           <Save2 />
         </Button>
         <ReactTooltip place="bottom" effect="solid" delayShow={200} />
