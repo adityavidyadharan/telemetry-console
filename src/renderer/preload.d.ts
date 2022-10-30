@@ -1,5 +1,7 @@
-import { Channels } from 'main/preload';
+import { ErrorObject } from 'ajv';
 import { DataModelType } from '../main/data/models';
+import { Mapping } from '../main/data/service/MappingService';
+import { Channels } from '../main/preload';
 
 declare global {
   interface Window {
@@ -18,6 +20,15 @@ declare global {
         getSensor(message: string, label: string): Promise<DataModelType[]>;
         getDistinctMessages(): Promise<string[]>;
         getDistinctLabels(message: string): Promise<string[]>;
+      };
+    };
+    mappings: {
+      ipcRenderer: {
+        getCurrentMapping(): Promise<Mapping>;
+        updateMapping(mapping: Mapping): Promise<void>;
+        getMapping(message: string, label: string): Promise<Mapping>;
+        validateMapping(mapping: Mapping): Promise<ErrorObject[]>;
+        resetMapping(): Promise<void>;
       };
     };
   }
