@@ -36,6 +36,8 @@ contextBridge.exposeInMainWorld('mappings', {
     getCurrentMapping: () => ipcRenderer.invoke('mappings:getCurrentMapping'),
     updateMapping: (mapping: Mapping) =>
       ipcRenderer.invoke('mappings:updateMapping', mapping),
+    updateMappingFromFile: (path: string) =>
+      ipcRenderer.invoke('mappings:updateMappingFromFile', path),
     getMapping: (message: string, label: string) =>
       ipcRenderer.invoke('mappings:getMapping', message, label),
     validateMapping: (mapping: Mapping) =>

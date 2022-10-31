@@ -33,3 +33,7 @@ ipcMain.handle('mappings:validateMapping', async (_event, ...args) => {
 ipcMain.handle('mappings:resetMapping', async () => {
   return new MappingService().reset();
 });
+
+ipcMain.handle('mappings:updateMappingFromFile', async (_event, ...args) => {
+  return new MappingService().updateMappingFromFile(args[0]);
+});
