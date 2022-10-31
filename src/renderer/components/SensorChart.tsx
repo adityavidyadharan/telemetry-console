@@ -40,7 +40,11 @@ const SensorChart = () => {
         />
       </div>
 
-      <LineChart message={message} label={label} />
+      <LineChart
+        message={message}
+        label={label}
+        show={label !== 'Data label'}
+      />
     </div>
   );
 };
