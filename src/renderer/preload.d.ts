@@ -26,6 +26,7 @@ declare global {
       ipcRenderer: {
         getCurrentMapping(): Promise<Mapping>;
         updateMapping(mapping: Mapping): Promise<void>;
+        updateMappingFromFile(path: string): Promise<ErrorObject[] | null>;
         getMapping(message: string, label: string): Promise<Mapping>;
         validateMapping(mapping: Mapping): Promise<ErrorObject[]>;
         resetMapping(): Promise<void>;

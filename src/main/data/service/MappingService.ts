@@ -49,13 +49,6 @@ const schema = {
   additionalProperties: false,
 };
 
-class ValidationError extends Error {
-  constructor(message: string, public errors: ErrorObject[]) {
-    super(message);
-    this.errors = errors;
-  }
-}
-
 export default class MappingService {
   resource: string;
 
@@ -81,7 +74,6 @@ export default class MappingService {
     const raw = fs.readFileSync(this.resource).toString();
     const mapping = JSON.parse(raw);
     log.silly('Mapping', mapping);
-    this.validateMapping(mapping);
     const status = this.validateMapping(mapping);
     if (status !== null && status !== undefined) return status;
     this.store.set(mapping);
@@ -97,12 +89,28 @@ export default class MappingService {
     log.info('Updating mapping');
     log.silly('Mapping', mapping);
     const status = this.validateMapping(mapping);
-    if (status !== null && status !== undefined)
-      throw new ValidationError('Invalid mapping', status);
+    if (status !== null && status !== undefined) return status;
     this.store.clear();
     this.store.set(mapping);
     log.info('Updated mapping');
     return null;
+  }
+
+  public updateMappingFromFile(path: string): ErrorObject[] | null {
+    log.info('Updating mapping');
+    const mapping = this.getMappingFromFile(path);
+    const status = this.validateMapping(mapping);
+    if (status !== null && status !== undefined) return status;
+    this.store.clear();
+    this.store.set(mapping);
+    log.info('Loaded mapping from file: ', path);
+    return null;
+  }
+
+  private getMappingFromFile(path: string) {
+    const raw = fs.readFileSync(path).toString();
+    const mapping = JSON.parse(raw);
+    return mapping;
   }
 
   public validateMapping(mapping: Mapping): ErrorObject[] | null | undefined {

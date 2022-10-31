@@ -47,6 +47,7 @@ const EditMapping = () => {
     }
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const verifyJSON = async (payload: any) => {
     console.debug('Verifying JSON');
     setSuccess(false);
