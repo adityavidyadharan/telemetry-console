@@ -27,6 +27,7 @@ class QueryService {
         .createQueryBuilder()
         .select('message')
         .distinct(true)
+        .orderBy('message', 'ASC')
         .getRawMany()
     ).map((entry) => entry.message);
   }
@@ -38,6 +39,7 @@ class QueryService {
         .select('label')
         .distinct(true)
         .where({ message })
+        .orderBy('label', 'ASC')
         .getRawMany()
     ).map((entry) => entry.label);
   }

@@ -1,4 +1,5 @@
 import { contextBridge, ipcRenderer, IpcRendererEvent } from 'electron';
+import { Mapping } from './data/service/MappingService';
 
 export type Channels = 'ipc-example';
 
@@ -27,5 +28,20 @@ contextBridge.exposeInMainWorld('data', {
     getDistinctMessages: () => ipcRenderer.invoke('data:getDistinctMessages'),
     getDistinctLabels: (message: string) =>
       ipcRenderer.invoke('data:getDistinctLabels', message),
+  },
+});
+
+contextBridge.exposeInMainWorld('mappings', {
+  ipcRenderer: {
+    getCurrentMapping: () => ipcRenderer.invoke('mappings:getCurrentMapping'),
+    updateMapping: (mapping: Mapping) =>
+      ipcRenderer.invoke('mappings:updateMapping', mapping),
+    updateMappingFromFile: (path: string) =>
+      ipcRenderer.invoke('mappings:updateMappingFromFile', path),
+    getMapping: (message: string, label: string) =>
+      ipcRenderer.invoke('mappings:getMapping', message, label),
+    validateMapping: (mapping: Mapping) =>
+      ipcRenderer.invoke('mappings:validateMapping', mapping),
+    resetMapping: () => ipcRenderer.invoke('mappings:resetMapping'),
   },
 });

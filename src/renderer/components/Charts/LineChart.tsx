@@ -9,29 +9,29 @@ type DataPoints = {
 interface ILineChartProps {
   message: string;
   label: string;
+  show: boolean;
 }
 
-const LineChart = ({ message, label }: ILineChartProps) => {
+const LineChart = ({ message, label, show }: ILineChartProps) => {
   const [data, setData] = useState<DataPoints>();
+  const [title, setTitle] = useState<string>('Data');
 
   useEffect(() => {
-    const getConnections = async () => {
-      if (message && label) {
-        const connections = await window.data.ipcRenderer.getSensor(
-          message,
-          label
-        );
-        const times = connections.map(
-          (connection) => new Date(connection.time)
-        );
-        const values = connections.map((connection) =>
-          Number(connection.value)
-        );
+    const updateTitle = () => {
+      setTitle(`${message} - ${label}`);
+    };
+    const getData = async () => {
+      if (!show) setData(undefined);
+      else if (message && label) {
+        const points = await window.data.ipcRenderer.getSensor(message, label);
+        const times = points.map((point) => new Date(point.time));
+        const values = points.map((point) => Number(point.value));
         setData({ times, values });
       }
     };
-    getConnections();
-  }, [message, label]);
+    updateTitle();
+    getData();
+  }, [message, label, show]);
 
   return (
     <Plot
@@ -45,7 +45,7 @@ const LineChart = ({ message, label }: ILineChartProps) => {
           automargin: true,
         },
       ]}
-      layout={{ width: 600, height: 600, title: 'A Fancy Plot' }}
+      layout={{ width: 600, height: 600, title }}
     />
   );
 };

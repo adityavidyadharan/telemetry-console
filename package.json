@@ -106,17 +106,23 @@
     }
   },
   "dependencies": {
+    "ajv": "^8.11.0",
     "bootstrap": "^5.2.2",
     "csv-parser": "^3.0.0",
     "electron-debug": "^3.2.0",
     "electron-log": "^4.4.8",
+    "electron-store": "^8.1.0",
     "electron-updater": "^5.2.3",
+    "json-source-map": "^0.6.1",
     "plotly.js": "^2.16.0",
     "react": "^18.2.0",
     "react-bootstrap": "^2.5.0",
+    "react-bootstrap-icons": "^1.9.1",
     "react-dom": "^18.2.0",
+    "react-json-editor-ajrm": "^2.5.13",
     "react-plotly.js": "^2.6.0",
-    "react-router-dom": "^6.3.0"
+    "react-router-dom": "^6.3.0",
+    "react-tooltip": "^4.4.3"
   },
   "devDependencies": {
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.7",
@@ -129,6 +135,7 @@
     "@types/plotly.js": "^2.12.7",
     "@types/react": "^18.0.17",
     "@types/react-dom": "^18.0.6",
+    "@types/react-json-editor-ajrm": "^2.5.3",
     "@types/react-plotly.js": "^2.5.2",
     "@types/react-test-renderer": "^18.0.0",
     "@types/terser-webpack-plugin": "^5.0.4",
@@ -264,7 +271,7 @@
   "electronmon": {
     "patterns": [
       "!**/**",
-      "src/main/*"
+      "src/main/**"
     ],
     "logLevel": "quiet"
   }
