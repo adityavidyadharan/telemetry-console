@@ -41,6 +41,7 @@ const LineChart = ({
       setLoading(false);
     };
     getData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [message]);
   useEffect(() => {
     const resetData = async () => {
@@ -49,6 +50,7 @@ const LineChart = ({
       setLoading(false);
     };
     resetData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [reset]);
 
   return (
