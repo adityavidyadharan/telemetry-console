@@ -7,7 +7,7 @@ import Mappings from './components/Mappings/Mappings';
 import EditMapping from './components/Mappings/EditMapping';
 import Home from './components/Home';
 import UploadMapping from './components/Mappings/UploadMapping';
-import SensorChart from './components/SensorChart';
+import ChartGrid from './components/ChartGrid';
 
 export default function App() {
   return (
@@ -17,7 +17,7 @@ export default function App() {
         <Route path="/mappings" element={<Mappings />} />
         <Route path="/mappings/edit" element={<EditMapping />} />
         <Route path="/mappings/upload" element={<UploadMapping />} />
-        <Route path="/charts" element={<SensorChart />} />
+        <Route path="/charts" element={<ChartGrid />} />
       </Routes>
       <Link to="/">
         <Button>Home</Button>

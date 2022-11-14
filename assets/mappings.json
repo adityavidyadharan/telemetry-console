@@ -1,0 +1,1660 @@
+{
+  "BMS_voltages": {
+    "BMS_voltage_average": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "BMS_voltage_low": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "BMS_voltage_high": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "BMS_voltage_total": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    }
+  },
+  "BMS_temperatures": {
+    "BMS_average_temperature": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "BMS_low_temperature": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "BMS_high_temperature": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    }
+  },
+  "MC_analog_input_voltages": {
+    "MC_analog_input_1": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "MC_analog_input_2": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "MC_analog_input_3": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "MC_analog_input_4": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    }
+  },
+  "MC_digital_input_status": {
+    "MC_digital_input_1": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "MC_digital_input_2": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "MC_digital_input_3": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "MC_digital_input_4": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "MC_digital_input_5": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "MC_digital_input_6": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "MC_digital_input_7": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "MC_digital_input_8": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    }
+  },
+  "MC_motor_position_information": {
+    "motor_angle": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "motor_speed": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "elec_output_freq": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "delta_resolver_filtered": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    }
+  },
+  "MC_current_information": {
+    "phase_a_current": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "phase_b_current": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "phase_c_current": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "dc_bus_current": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    }
+  },
+  "MC_voltage_information": {
+    "dc_bus_voltage": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "output_voltage": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "phase_ab_voltage": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "phase_bc_voltage": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    }
+  },
+  "MC_internal_states": {
+    "vsm_state": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "inverter_state": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "relay_active_1": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "relay_active_2": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "relay_active_3": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "relay_active_4": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "relay_active_5": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "relay_active_6": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "inverter_run_mode": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "inverter_active_discharge_state": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "inverter_command_mode": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "inverter_enable_state": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "inverter_enable_lockout": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "direction_command": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    }
+  },
+  "MC_fault_codes": {
+    "post_fault_lo": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "post_lo_hw_gate_desaturation_fault": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "post_lo_hw_overcurrent_fault": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "post_lo_accelerator_shorted": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "post_lo_accelerator_opened": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "post_lo_current_sensor_low": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "post_lo_current_sensor_high": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "post_lo_module_temperature_low": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "post_lo_module_temperature_high": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "post_lo_ctrl_pcb_temperature_low": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "post_lo_ctrl_pcb_temperature_high": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "post_lo_gate_drive_pcb_temperature_low": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "post_lo_gate_drive_temperature_high": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "post_lo_5v_sense_voltage_low": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "post_lo_5v_sense_voltage_high": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "post_lo_12v_sense_voltage_low": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "post_lo_12v_sense_voltage_high": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "post_fault_hi": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "post_hi_25v_sense_voltage_low": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "post_hi_25v_sense_voltage_high": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "post_hi_15v_sense_voltage_low": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "post_hi_15v_sense_voltage_high": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "post_hi_dc_bus_voltage_high": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "post_hi_dc_bus_voltage_low": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "post_hi_precharge_timeout": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "post_hi_precharge_voltage_failure": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "post_hi_eeprom_checksum_invalidate": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "post_hi_eeproom_data_out_of_range": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "post_hi_eeprom_update_required": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "post_hi_reserved1": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "post_high_reserved2": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "post_high_reserved3": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "post_hi_brake_shorted": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "post_hi_brake_open": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "run_fault_lo": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "run_lo_motor_overspeed_fault": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "run_lo_overcurrent_fault": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "run_lo_overvoltage_fault": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "run_lo_inverter_overtemperature_fault": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "run_lo_accelerator_input_shorted_fault": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "run_lo_accelerator_input_open_fault": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "run_lo_direction_command_fault": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "run_lo_inverter_response_timeout_fault": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "run_lo_hardware_gate_desaturation_fault": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "run_lo_hardware_overcurrent_fault": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "run_lo_undervoltage_fault": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "run_lo_can_command_message_lost_fault": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "run_lo_motor_overtemperature_fault": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "run_lo_reserved1": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "run_lo_reserved2": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "run_lo_reserved3": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "run_fault_hi": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "run_hi_brake_input_shorted_fault": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "run_hi_brake_input_open_fault": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "run_hi_module_a_overtemperature_fault": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "run_hi_module_b_overtemperature_fault": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "run_hi_module_c_overtemperature_fault": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "run_hi_pcb_overtemperature_fault": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "run_hi_gate_drive_board_1_overtemperature_fault": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "run_hi_gate_drive_board_2_overtemperature_fault": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "run_hi_gate_drive_board_3_overtemperature_fault": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "run_hi_current_sensor_fault": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "run_hi_reserved1": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "run_hi_reserved2": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "run_hi_reserved3": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "run_hi_reserved4": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "run_hi_resolver_not_connected": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "run_hi_inverter_discharge_active": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    }
+  },
+  "MC_torque_timer_information": {
+    "commanded_torque": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "torque_feedback": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "rms_uptime": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    }
+  },
+  "BMS_detailed_voltages": {
+    "IC_2_CELL_0": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_2_CELL_1": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_2_CELL_2": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_5_CELL_3": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_5_CELL_4": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_5_CELL_5": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_0_CELL_6": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_0_CELL_7": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_0_CELL_8": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_0_CELL_3": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_0_CELL_4": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_0_CELL_5": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_4_CELL_0": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_4_CELL_1": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_4_CELL_2": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_6_CELL_6": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_6_CELL_7": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_6_CELL_8": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_1_CELL_6": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_1_CELL_7": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_1_CELL_8": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_2_CELL_3": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_2_CELL_4": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_2_CELL_5": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_2_CELL_9": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_2_CELL_10": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_2_CELL_11": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_7_CELL_6": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_7_CELL_7": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_7_CELL_8": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_5_CELL_6": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_5_CELL_7": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_5_CELL_8": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_7_CELL_0": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_7_CELL_1": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_7_CELL_2": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_7_CELL_3": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_7_CELL_4": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_7_CELL_5": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_0_CELL_9": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_0_CELL_10": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_0_CELL_11": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_3_CELL_3": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_3_CELL_4": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_3_CELL_5": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_3_CELL_0": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_3_CELL_1": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_3_CELL_2": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_0_CELL_0": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_0_CELL_1": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_0_CELL_2": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_6_CELL_3": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_6_CELL_4": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_6_CELL_5": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_6_CELL_9": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_6_CELL_10": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_6_CELL_11": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_4_CELL_6": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_4_CELL_7": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_4_CELL_8": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_5_CELL_0": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_5_CELL_1": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_5_CELL_2": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_4_CELL_3": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_4_CELL_4": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_4_CELL_5": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_3_CELL_6": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_3_CELL_7": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_3_CELL_8": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_4_CELL_9": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_4_CELL_10": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_4_CELL_11": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_2_CELL_6": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_2_CELL_7": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_2_CELL_8": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_6_CELL_0": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_6_CELL_1": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_6_CELL_2": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_1_CELL_3": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_1_CELL_4": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_1_CELL_5": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_1_CELL_0": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_1_CELL_1": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_1_CELL_2": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    }
+  },
+  "BMS_detailed_temperatures": {
+    "IC_6_therm_0": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_6_therm_1": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_6_therm_2": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_4_therm_3": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_4_humidity": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_4_Vref": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_5_therm_0": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_5_therm_1": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_5_therm_2": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_0_therm_3": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_0_humidity": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_0_Vref": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_2_therm_3": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_2_humidity": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_2_Vref": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_1_therm_3": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_1_temperature": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_1_Vref": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_3_therm_0": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_3_therm_1": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_3_therm_2": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_7_therm_3": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_7_temperature": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_7_Vref": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_7_therm_0": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_7_therm_1": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_7_therm_2": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_6_therm_3": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_6_humidity": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_6_Vref": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_1_therm_0": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_1_therm_1": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_1_therm_2": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_5_therm_3": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_5_temperature": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_5_Vref": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_4_therm_0": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_4_therm_1": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_4_therm_2": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_2_therm_0": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_2_therm_1": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_2_therm_2": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_3_therm_3": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_3_temperature": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_3_Vref": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_0_therm_0": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_0_therm_1": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "IC_0_therm_2": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    }
+  },
+  "SAB_readings_rear": {
+    "cooling_loop_fluid_temp": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "amb_air_temp": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "bl_susp_lin_pot": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "br_susp_lin_pot": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    }
+  },
+  "BMS_onboard_temperatures": {
+    "average_temperature": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "low_temperature": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "high_temperature": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    }
+  },
+  "IMU_accelerometer": {
+    "lat_accel": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "long_accel": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "vert_accel": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    }
+  },
+  "BMS_status": {
+    "BMS_state": {
+      "live": [
+        "hex"
+      ],
+      "static": "discrete"
+    },
+    "BMS_error_flags": {
+      "live": [
+        "hex"
+      ],
+      "static": "discrete"
+    },
+    "BMS_overvoltage": {
+      "live": [
+        "boolean"
+      ],
+      "static": "discrete"
+    },
+    "BMS_undervoltage": {
+      "live": [
+        "boolean"
+      ],
+      "static": "discrete"
+    },
+    "BMS_total_voltage_high": {
+      "live": [
+        "boolean"
+      ],
+      "static": "discrete"
+    },
+    "BMS_discharge_overcurrent": {
+      "live": [
+        "boolean"
+      ],
+      "static": "discrete"
+    },
+    "BMS_charge_overcurrent": {
+      "live": [
+        "boolean"
+      ],
+      "static": "discrete"
+    },
+    "BMS_discharge_overtemp": {
+      "live": [
+        "boolean"
+      ],
+      "static": "discrete"
+    },
+    "BMS_charge_overtemp": {
+      "live": [
+        "boolean"
+      ],
+      "static": "discrete"
+    },
+    "BMS_undertemp": {
+      "live": [
+        "boolean"
+      ],
+      "static": "discrete"
+    },
+    "BMS_onboard_overtemp": {
+      "live": [
+        "boolean"
+      ],
+      "static": "discrete"
+    },
+    "BMS_current": {
+      "live": [
+        "line"
+      ],
+      "static": "line"
+    },
+    "BMS_flags": {
+      "live": [
+        "hex"
+      ],
+      "static": "discrete"
+    }
+  }
+}

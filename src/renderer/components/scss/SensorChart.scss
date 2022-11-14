@@ -1,0 +1,18 @@
+.dropdown-wrapper {
+  margin-right: 10px;
+}
+
+.dropdown {
+  padding-bottom: 10px;
+}
+
+.chart-wrapper {
+  vertical-align: top;
+  display: flex;
+  flex-direction: row;
+}
+
+.dropdown-menu {
+  // max-height: 200px;
+  overflow-y: auto;
+}
