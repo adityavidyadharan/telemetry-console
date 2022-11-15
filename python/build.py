@@ -31,6 +31,7 @@ if args.output == "mac":
   PyInstaller.__main__.run([
     'python/import.py',
     '--onefile',
+    '--specpath=python/dist/',
     '--workpath=python/build',
     '--distpath={}'.format(output),
     '--target-arch={}'.format("x86_64"),
@@ -39,6 +40,7 @@ else:
   PyInstaller.__main__.run([
       'python/import.py',
       '--onefile',
+      '--specpath=python/dist/',
       '--workpath=python/build',
       '--distpath={}'.format(output),
   ])
