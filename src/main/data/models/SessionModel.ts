@@ -1,13 +1,10 @@
+import { DataModelType } from '../models';
+
 export type SessionModelType = {
   id: number;
   name: string;
+  location: string;
   date: Date;
+  notes: string;
+  data: DataModelType[];
 };
-
-export class SessionModel {
-  id: number;
-
-  name: string;
-
-  date: Date;
-}

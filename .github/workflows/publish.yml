@@ -6,9 +6,45 @@ on:
       - main
 
 jobs:
+  python-build:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [macos-latest, windows-latest, ubuntu-latest]
+        include:
+          - folder: linux
+            os: ubuntu-latest
+          - folder: win
+            os: windows-latest
+          - folder: mac
+            os: macos-latest
+
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+
+      - name: Python Setup
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+          cache: 'pip'
+
+      - name: Pip Install
+        run: |
+          pip install -r python/requirements.txt --ignore-installed
+
+      - name: Build Python Executable
+        run: |
+          python python/build.py ${{ matrix.folder }}
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: ${{ github.run_id }}-publish-python-build-${{ matrix.folder }}
+          path: python/dist/${{ matrix.folder }}/import
+
   publish:
-    # To enable auto publishing to github, update your electron publisher
-    # config in package.json > "build" and remove the conditional below
+    needs: python-build
 
     runs-on: ${{ matrix.os }}
 
@@ -31,6 +67,24 @@ jobs:
           npm install
           npm run postinstall
           npm run build
+
+      - name: Pull Artifacts | Windows
+        uses: actions/download-artifact@v3
+        with:
+          name: ${{ github.run_id }}-publish-python-build-win
+          path: python/dist/win/
+
+      - name: Pull Artifacts | Mac
+        uses: actions/download-artifact@v3
+        with:
+          name: ${{ github.run_id }}-publish-python-build-mac
+          path: python/dist/mac
+
+      - name: Pull Artifacts | Linux
+        uses: actions/download-artifact@v3
+        with:
+          name: ${{ github.run_id }}-publish-python-build-linux
+          path: python/dist/linux
 
       - name: Publish releases
         env:

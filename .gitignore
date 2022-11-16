@@ -31,3 +31,8 @@ npm-debug.log.*
 data/*
 
 *.sqlite3*
+
+python/build/*
+
+
+python/dist/*

@@ -4,6 +4,7 @@ import path from 'path';
 import { app } from 'electron';
 import log, { LogMessage } from 'electron-log';
 import chalk from 'chalk';
+import os from 'os';
 
 export function resolveHtmlPath(htmlFileName: string) {
   if (process.env.NODE_ENV === 'development') {
@@ -19,9 +20,25 @@ export function getDataPath() {
   return process.env.NODE_ENV !== 'production' ? '.' : app.getPath('userData');
 }
 
-const RESOURCES_PATH = app.isPackaged
-  ? path.join(process.resourcesPath, 'assets')
-  : path.join(__dirname, '../../assets');
+// const RESOURCES_PATH = app.isPackaged
+//   ? path.join(process.resourcesPath, 'assets')
+//   : path.join(__dirname, '../../assets');
+const RESOURCES_PATH = path.join(__dirname, '../../assets');
+
+const OS_MAP: Record<string, string> = {
+  Windows_NT: 'win',
+  Darwin: 'mac',
+  Linux: 'linux',
+};
+
+export const getPythonPath = (target: string) => {
+  const OS = OS_MAP[os.type()];
+  const file = OS === 'win' ? `${target}.exe` : target;
+  return path.join(__dirname, '../../python/dist/', OS, file);
+  // return app.isPackaged
+  //   ? path.join(process.resourcesPath, 'python/dist/', OS, file)
+  //   : path.join(__dirname, '../../python/dist/', OS, file);
+};
 
 export const getAssetPath = (...paths: string[]): string => {
   return path.join(RESOURCES_PATH, ...paths);

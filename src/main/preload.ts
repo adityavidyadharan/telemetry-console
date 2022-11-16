@@ -45,3 +45,20 @@ contextBridge.exposeInMainWorld('mappings', {
     resetMapping: () => ipcRenderer.invoke('mappings:resetMapping'),
   },
 });
+
+contextBridge.exposeInMainWorld('parse', {
+  ipcRenderer: {
+    parse: (path: string) => ipcRenderer.invoke('parse:parse', path),
+    onChunk: (
+      chunk: (data: number) => void,
+      doneCB: (code: number) => void
+    ) => {
+      const chunkCB = (_event: IpcRendererEvent, data: number) => chunk(data);
+      ipcRenderer.on('parse:chunk', chunkCB);
+      ipcRenderer.on('parse:done', (_event: IpcRendererEvent, code: number) => {
+        doneCB(code);
+        ipcRenderer.removeListener('parse:chunk', chunkCB);
+      });
+    },
+  },
+});

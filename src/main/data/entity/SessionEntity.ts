@@ -1,26 +1,33 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
-import { SessionModelType } from '../models/SessionModel';
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
+import { Type } from 'class-transformer';
+import DataEntity from './DataEntity';
 
 @Entity({ name: 'Sessions' })
 class SessionEntity {
   @PrimaryGeneratedColumn()
-  index: number;
+  id: number;
 
   @Column()
   name: string;
 
-  @Column()
+  @Column({
+    nullable: true,
+  })
   location: string;
 
   @Column()
   date: Date;
 
-  @Column()
+  @Column({
+    nullable: true,
+  })
   notes: string;
 
-  constructor(model: SessionModelType) {
-    Object.assign(this, model);
-  }
+  @OneToMany(() => DataEntity, (data) => data.session, {
+    onDelete: 'CASCADE',
+  })
+  @Type(() => DataEntity)
+  data: DataEntity[];
 }
 
 export default SessionEntity;

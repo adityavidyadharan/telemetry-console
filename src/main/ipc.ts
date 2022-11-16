@@ -1,5 +1,6 @@
 import { ipcMain } from 'electron';
 import MappingService from './data/service/MappingService';
+import ParseService from './data/service/ParseService';
 import QueryService from './data/service/QueryService';
 
 ipcMain.handle('data:getSensor', async (_event, ...args) => {
@@ -36,4 +37,8 @@ ipcMain.handle('mappings:resetMapping', async () => {
 
 ipcMain.handle('mappings:updateMappingFromFile', async (_event, ...args) => {
   return new MappingService().updateMappingFromFile(args[0]);
+});
+
+ipcMain.handle('parse:parse', async (_event, ...args) => {
+  return new ParseService().parse(args[0]);
 });
