@@ -32,6 +32,12 @@ declare global {
         resetMapping(): Promise<void>;
       };
     };
+    parse: {
+      ipcRenderer: {
+        parse(path: string): Promise<string>;
+        onChunk(chunk: (data: number) => void, doneCB: () => void): void;
+      };
+    };
   }
 }
 
