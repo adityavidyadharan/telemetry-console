@@ -1,6 +1,14 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  Index,
+  ManyToOne,
+} from 'typeorm';
+import SessionEntity from './SessionEntity';
 
 @Entity({ name: 'Data' })
+@Index(['message', 'label'])
 class DataEntity {
   @PrimaryGeneratedColumn()
   index: number;
@@ -20,8 +28,13 @@ class DataEntity {
   @Column()
   value: string;
 
-  @Column()
+  @Column({
+    nullable: true,
+  })
   unit: string;
+
+  @ManyToOne(() => SessionEntity, (session) => session.data)
+  session: SessionEntity;
 }
 
 export default DataEntity;
