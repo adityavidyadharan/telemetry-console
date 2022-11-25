@@ -32,6 +32,7 @@
   ],
   "main": "./src/main/main.ts",
   "scripts": {
+    "typecheck": "tsc --noEmit",
     "build": "concurrently \"npm run build:main\" \"npm run build:renderer\"",
     "build:main": "cross-env NODE_ENV=production TS_NODE_TRANSPILE_ONLY=true webpack --config ./.erb/configs/webpack.config.main.prod.ts",
     "build:renderer": "cross-env NODE_ENV=production TS_NODE_TRANSPILE_ONLY=true webpack --config ./.erb/configs/webpack.config.renderer.prod.ts",
@@ -107,6 +108,8 @@
     }
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^1.9.0",
+    "@types/react-redux": "^7.1.24",
     "ajv": "^8.11.0",
     "bootstrap": "^5.2.2",
     "csv-parser": "^3.0.0",
@@ -122,6 +125,7 @@
     "react-dom": "^18.2.0",
     "react-json-editor-ajrm": "^2.5.13",
     "react-plotly.js": "^2.6.0",
+    "react-redux": "^8.0.5",
     "react-router-dom": "^6.3.0",
     "react-tooltip": "^4.4.3"
   },

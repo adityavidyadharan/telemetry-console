@@ -3,10 +3,9 @@ import { ChildProcess, execFile, spawn } from 'child_process';
 import { app } from 'electron';
 import DataEntity from '../entity/DataEntity';
 import AppDataSource from '../data-source';
-import SessionEntity from '../entity/SessionEntity';
-// import { getWindow } from '../../window';
 import { getPythonPath } from '../../util';
 import { getWindow } from '../../window';
+import { store } from '../redux/store';
 
 const fs = require('fs');
 
@@ -15,13 +14,10 @@ const csv = require('csv-parser');
 // const { spawn, exec } = require('child_process');
 
 class ParseService {
-  dataRepository: Repository<DataEntity>;
-
-  sessionRepository: Repository<SessionEntity>;
+  repository: Repository<DataEntity>;
 
   constructor() {
-    this.dataRepository = AppDataSource.getRepository(DataEntity);
-    this.sessionRepository = AppDataSource.getRepository(SessionEntity);
+    this.repository = AppDataSource.getRepository(DataEntity);
   }
 
   public async verify(path: string) {
@@ -39,21 +35,12 @@ class ParseService {
     );
   }
 
-  public async createSession() {
-    const entity = new SessionEntity();
-    entity.name = 'test';
-    entity.date = new Date();
-    const resp = await this.sessionRepository.save(entity);
-    return resp.id;
-  }
-
   public async parse(path: string) {
     const window = getWindow();
     if (!window) return;
     window.webContents.send('parse:chunk', path);
 
-    console.log(path);
-    const session = await this.createSession();
+    const session = store.getState().session.id;
 
     let command: ChildProcess;
     if (app.isPackaged) {
@@ -76,7 +63,7 @@ class ParseService {
     if (command === null || command.stdout === null) return;
 
     command.stdout.on('data', (data: Buffer) => {
-      console.log(data.toString());
+      window.webContents.send('parse:chunk', data.toString());
     });
 
     command.stdout.on('close', (code: number) => {
@@ -84,16 +71,6 @@ class ParseService {
       else window.webContents.send('parse:done', 0);
     });
   }
-
-  public async test() {
-    await AppDataSource.initialize();
-    console.log('starting');
-    console.time('dbsave');
-    await this.parse('./data/data0024.CSV');
-    console.timeEnd('dbsave');
-  }
 }
 
 export default ParseService;
-
-new ParseService().test();

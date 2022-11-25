@@ -8,6 +8,7 @@ import EditMapping from './components/Mappings/EditMapping';
 import Home from './components/Home';
 import UploadMapping from './components/Mappings/UploadMapping';
 import ChartGrid from './components/ChartGrid';
+import SessionGrid from './components/Parsing/SessionGrid';
 
 export default function App() {
   return (
@@ -18,6 +19,7 @@ export default function App() {
         <Route path="/mappings/edit" element={<EditMapping />} />
         <Route path="/mappings/upload" element={<UploadMapping />} />
         <Route path="/charts" element={<ChartGrid />} />
+        <Route path="/sessions" element={<SessionGrid />} />
       </Routes>
       <Link to="/">
         <Button>Home</Button>

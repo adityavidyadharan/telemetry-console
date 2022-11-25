@@ -4,6 +4,11 @@ import { Link } from 'react-router-dom';
 const Home = () => {
   return (
     <div>
+      <Link to="/sessions">
+        <Button variant="link" className="menu-item">
+          <h4>Sessions</h4>
+        </Button>
+      </Link>
       <Link to="/mappings">
         <Button variant="link" className="menu-item">
           <h4>Mappings</h4>
