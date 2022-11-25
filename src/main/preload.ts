@@ -52,6 +52,7 @@ contextBridge.exposeInMainWorld('mappings', {
 
 contextBridge.exposeInMainWorld('parse', {
   ipcRenderer: {
+    verify: (path: string) => ipcRenderer.invoke('parse:verify', path),
     parse: (path: string) => ipcRenderer.invoke('parse:parse', path),
     onChunk: (
       chunk: (data: number) => void,

@@ -11,7 +11,10 @@ const fs = require('fs');
 
 const csv = require('csv-parser');
 
-// const { spawn, exec } = require('child_process');
+export type FileVerification = {
+  valid: boolean;
+  message: string;
+};
 
 class ParseService {
   repository: Repository<DataEntity>;
@@ -20,17 +23,32 @@ class ParseService {
     this.repository = AppDataSource.getRepository(DataEntity);
   }
 
-  public async verify(path: string) {
+  public async verify(path: string): Promise<FileVerification> {
     const stream = fs.createReadStream(path);
     const target = new Set(['time', 'id', 'message', 'label', 'value', 'unit']);
     return new Promise((resolve) =>
       stream.pipe(csv()).on('headers', (data: string[]) => {
         stream.destroy();
         const headers = new Set(data);
-        resolve(
-          target.size === headers.size &&
-            [...target].every((header) => headers.has(header))
-        );
+        if (headers.size <= target.size) {
+          target.forEach((header) => {
+            if (!headers.has(header)) {
+              resolve({
+                valid: false,
+                message: `Missing header: ${header}`,
+              });
+            }
+          });
+        } else {
+          resolve({
+            valid: false,
+            message: 'Invalid number of headers',
+          });
+        }
+        resolve({
+          valid: true,
+          message: 'Valid file',
+        });
       })
     );
   }

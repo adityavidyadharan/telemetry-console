@@ -9,6 +9,7 @@ import Home from './components/Home';
 import UploadMapping from './components/Mappings/UploadMapping';
 import ChartGrid from './components/ChartGrid';
 import SessionGrid from './components/Sessions/SessionGrid';
+import Parse from './components/Parsing/Parse';
 
 export default function App() {
   return (
@@ -20,6 +21,7 @@ export default function App() {
         <Route path="/mappings/upload" element={<UploadMapping />} />
         <Route path="/charts" element={<ChartGrid />} />
         <Route path="/sessions" element={<SessionGrid />} />
+        <Route path="/parse" element={<Parse />} />
       </Routes>
       <Link to="/">
         <Button>Home</Button>

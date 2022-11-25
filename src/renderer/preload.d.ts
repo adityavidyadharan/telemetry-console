@@ -5,6 +5,7 @@ import {
   SessionModelType,
 } from '../main/data/models/SessionModel';
 import { Mapping } from '../main/data/service/MappingService';
+import { FileVerification } from '../main/data/service/ParseService';
 import { Channels } from '../main/preload';
 
 declare global {
@@ -38,6 +39,7 @@ declare global {
     };
     parse: {
       ipcRenderer: {
+        verify(path: string): Promise<FileVerification>;
         parse(path: string): Promise<string>;
         onChunk(chunk: (data: number) => void, doneCB: () => void): void;
       };

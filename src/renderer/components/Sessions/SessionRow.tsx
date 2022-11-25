@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Button, Spinner } from 'react-bootstrap';
 import { PencilSquare, Trash } from 'react-bootstrap-icons';
+import { useNavigate } from 'react-router-dom';
 import { SessionModelType } from '../../../main/data/models/SessionModel';
 
 interface ISessionFormProps {
@@ -15,9 +16,11 @@ const SessionRow = ({
   fetchSessions,
 }: ISessionFormProps) => {
   const [load, setLoad] = useState<boolean>(false);
+  const navigate = useNavigate();
 
   const selectSession = async (id: number) => {
     await window.session.ipcRenderer.select(id);
+    navigate('/parse');
   };
 
   const deleteSession = async (id: number) => {
