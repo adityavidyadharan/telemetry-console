@@ -46,7 +46,7 @@ const SessionForm = ({ toggle, initial }: ISessionFormProps) => {
     toggle();
   };
 
-  const setField = (field: string, value: any) => {
+  const setField = (field: string, value: unknown) => {
     setForm({
       ...form,
       [field]: value,

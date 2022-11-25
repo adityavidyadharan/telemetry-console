@@ -4,7 +4,6 @@ import DataEntity from '../entity/DataEntity';
 import { DataModelType } from '../models';
 
 class QueryService {
-
   repository: Repository<DataEntity>;
 
   constructor() {
