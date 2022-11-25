@@ -16,6 +16,7 @@ class DataEntity {
   @Column()
   time: Date;
 
+  // ID given by the data
   @Column()
   id: string;
 
@@ -33,7 +34,9 @@ class DataEntity {
   })
   unit: string;
 
-  @ManyToOne(() => SessionEntity, (session) => session.data)
+  @ManyToOne(() => SessionEntity, (session) => session.data, {
+    onDelete: 'CASCADE',
+  })
   session: SessionEntity;
 }
 

@@ -1,4 +1,8 @@
 import { contextBridge, ipcRenderer, IpcRendererEvent } from 'electron';
+import {
+  SessionModelInputType,
+  SessionModelType,
+} from './data/models/SessionModel';
 import { Mapping } from './data/service/MappingService';
 
 export type Channels = 'ipc-example';
@@ -60,5 +64,17 @@ contextBridge.exposeInMainWorld('parse', {
         ipcRenderer.removeListener('parse:chunk', chunkCB);
       });
     },
+  },
+});
+
+contextBridge.exposeInMainWorld('session', {
+  ipcRenderer: {
+    create: (model: SessionModelInputType) =>
+      ipcRenderer.invoke('session:create', model),
+    edit: (model: SessionModelType) =>
+      ipcRenderer.invoke('session:edit', model),
+    delete: (id: number) => ipcRenderer.invoke('session:delete', id),
+    select: (id: number) => ipcRenderer.invoke('session:select', id),
+    fetch: () => ipcRenderer.invoke('session:fetch'),
   },
 });

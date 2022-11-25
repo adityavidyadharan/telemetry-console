@@ -1,5 +1,9 @@
 import { ErrorObject } from 'ajv';
 import { DataModelType } from '../main/data/models';
+import {
+  SessionModelInputType,
+  SessionModelType,
+} from '../main/data/models/SessionModel';
 import { Mapping } from '../main/data/service/MappingService';
 import { Channels } from '../main/preload';
 
@@ -36,6 +40,15 @@ declare global {
       ipcRenderer: {
         parse(path: string): Promise<string>;
         onChunk(chunk: (data: number) => void, doneCB: () => void): void;
+      };
+    };
+    session: {
+      ipcRenderer: {
+        create(session: SessionModelInputType): Promise<void>;
+        edit(session: SessionModelType): Promise<void>;
+        delete(id: number): Promise<void>;
+        select(id: number): Promise<void>;
+        fetch(): Promise<SessionModelType[]>;
       };
     };
   }

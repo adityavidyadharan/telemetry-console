@@ -4,12 +4,9 @@ import DataEntity from '../entity/DataEntity';
 import { DataModelType } from '../models';
 
 class QueryService {
-  table: string;
-
   repository: Repository<DataEntity>;
 
-  constructor(table: string) {
-    this.table = table;
+  constructor() {
     this.repository = AppDataSource.getRepository(DataEntity);
   }
 
