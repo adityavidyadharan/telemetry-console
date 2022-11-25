@@ -8,7 +8,7 @@ import EditMapping from './components/Mappings/EditMapping';
 import Home from './components/Home';
 import UploadMapping from './components/Mappings/UploadMapping';
 import ChartGrid from './components/ChartGrid';
-import SessionGrid from './components/Parsing/SessionGrid';
+import SessionGrid from './components/Sessions/SessionGrid';
 
 export default function App() {
   return (
