@@ -75,7 +75,7 @@ class ParseService {
         './UserData.sqlite3',
         './data/data0024.CSV',
         String(session),
-        String(2),
+        String(10),
       ]);
     }
 
@@ -83,12 +83,11 @@ class ParseService {
 
     command.stdout.on('data', (data: Buffer) => {
       log.verbose('Data Chunk: ', data.toString());
-      window.webContents.send('parse:chunk', data.toString());
+      window.webContents.send('parse:chunk', Number(data.toString()));
     });
 
     command.stdout.on('close', async (code: number) => {
-      log.debug('Parsing complete', Number(code));
-      console.log(typeof code);
+      window.webContents.send('parse:chunk', 10);
       if (Number(code) === 0) await this.sessionService.update(session);
       window.webContents.send('parse:done', code);
     });

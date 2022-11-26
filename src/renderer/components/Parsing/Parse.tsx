@@ -1,7 +1,9 @@
 import { useState } from 'react';
-import { Form, Button, Alert } from 'react-bootstrap';
+import { Form, Button, Alert, ProgressBar } from 'react-bootstrap';
 import { CheckCircle } from 'react-bootstrap-icons';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
+
+import './Parse.scss';
 
 type PageState = {
   id: number;
@@ -12,6 +14,10 @@ const Upload = () => {
   const [success, setSuccess] = useState<boolean>(false);
   const [file, setFile] = useState<string>();
   const [validated, setValidated] = useState<boolean>(false);
+  const [progress, setProgress] = useState<number>(0);
+  const [hide, setHide] = useState<boolean>(true);
+
+  const navigate = useNavigate();
 
   const session = (useLocation().state as PageState).id;
 
@@ -23,12 +29,11 @@ const Upload = () => {
       return;
     }
     console.log('Starting parse process');
-    await window.parse.ipcRenderer.parse(
-      file,
-      session,
-      (step: number) => console.log('chunked: ', step),
-      () => console.log('done')
-    );
+    setHide(false);
+    await window.parse.ipcRenderer.parse(file, session, setProgress, () => {
+      console.log('done');
+      setSuccess(true);
+    });
   };
 
   const handleUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -55,7 +60,17 @@ const Upload = () => {
   };
 
   return (
-    <div>
+    <div className="parse-container">
+      <Alert
+        className="alert"
+        variant="success"
+        show={success}
+        dismissible
+        onClose={() => setSuccess(false)}
+      >
+        <CheckCircle />
+        <h4>Success</h4>
+      </Alert>
       <div>
         <h1>Upload Data CSV</h1>
       </div>
@@ -76,16 +91,14 @@ const Upload = () => {
         </Form.Group>
         <Button type="submit">Upload Data</Button>
       </Form>
-      <Alert
-        className="alert"
-        variant="success"
-        show={success}
-        dismissible
-        onClose={() => setSuccess(false)}
-      >
-        <CheckCircle />
-        <h4>Success</h4>
-      </Alert>
+      <ProgressBar
+        now={progress}
+        max={10}
+        animated={!success}
+        hidden={hide}
+        variant={success ? 'success' : undefined}
+      />
+      <Button onClick={() => navigate('/sessions')}>Back</Button>
     </div>
   );
 };
