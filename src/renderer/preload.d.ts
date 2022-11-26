@@ -40,12 +40,17 @@ declare global {
     parse: {
       ipcRenderer: {
         verify(path: string): Promise<FileVerification>;
-        parse(path: string): Promise<string>;
-        onChunk(chunk: (data: number) => void, doneCB: () => void): void;
+        parse(
+          path: string,
+          session: number,
+          chunk: (data: number) => void,
+          doneCB: () => void
+        ): Promise<void>;
       };
     };
     session: {
       ipcRenderer: {
+        getFileSize(): Promise<number>;
         create(session: SessionModelInputType): Promise<void>;
         edit(session: SessionModelType): Promise<void>;
         delete(id: number): Promise<void>;

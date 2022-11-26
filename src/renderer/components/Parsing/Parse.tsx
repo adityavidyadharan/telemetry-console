@@ -1,12 +1,19 @@
 import { useState } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
 import { CheckCircle } from 'react-bootstrap-icons';
+import { useLocation } from 'react-router-dom';
 
-const Parse = () => {
+type PageState = {
+  id: number;
+};
+
+const Upload = () => {
   const [error, setError] = useState<string>();
   const [success, setSuccess] = useState<boolean>(false);
   const [file, setFile] = useState<string>();
   const [validated, setValidated] = useState<boolean>(false);
+
+  const session = (useLocation().state as PageState).id;
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -15,14 +22,20 @@ const Parse = () => {
       setError('Please upload a CSV file');
       return;
     }
-    console.log('start upload');
-    // upload file if valid
+    console.log('Starting parse process');
+    await window.parse.ipcRenderer.parse(
+      file,
+      session,
+      (step: number) => console.log('chunked: ', step),
+      () => console.log('done')
+    );
   };
 
   const handleUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
     setError('Please upload a CSV file');
     if (event === null || event === undefined) return;
-    if (event.target.files === null || event.target.files[0] === undefined) return;
+    if (event.target.files === null || event.target.files[0] === undefined)
+      return;
 
     setValidated(true);
     setError(undefined);
@@ -44,11 +57,11 @@ const Parse = () => {
   return (
     <div>
       <div>
-        <h1>Parse Data CSV</h1>
+        <h1>Upload Data CSV</h1>
       </div>
       <Form noValidate onSubmit={handleSubmit}>
         <Form.Group>
-          <Form.Label>Upload your CSV file</Form.Label>
+          <Form.Label>Select your CSV file</Form.Label>
           <Form.Control
             type="file"
             onChange={handleUpload}
@@ -61,7 +74,7 @@ const Parse = () => {
             CSV headers match expectation
           </Form.Control.Feedback>
         </Form.Group>
-        <Button type="submit">Upload Mapping</Button>
+        <Button type="submit">Upload Data</Button>
       </Form>
       <Alert
         className="alert"
@@ -77,4 +90,4 @@ const Parse = () => {
   );
 };
 
-export default Parse;
+export default Upload;
