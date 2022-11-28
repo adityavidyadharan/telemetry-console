@@ -3,7 +3,7 @@
 import { app, BrowserWindow, shell } from 'electron';
 import path from 'path';
 import MenuBuilder from './menu';
-import { resolveHtmlPath } from './util';
+import { resolveHtmlPath, setLog } from './util';
 
 let mainWindow: BrowserWindow | null = null;
 
@@ -78,6 +78,7 @@ const createWindow = async () => {
   // Remove this if your app does not use auto updates
   // eslint-disable-next-line
   // new AppUpdater();
+  setLog();
 };
 
 const getWindow = () => {

@@ -11,5 +11,5 @@ export type SessionModelInputType = {
 export type SessionModelType = SessionModelInputType & {
   id: number;
   data: DataModelType[];
-  populated: boolean;
+  count: number;
 };

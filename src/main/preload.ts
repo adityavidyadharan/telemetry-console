@@ -52,8 +52,10 @@ contextBridge.exposeInMainWorld('mappings', {
 
 contextBridge.exposeInMainWorld('parse', {
   ipcRenderer: {
-    parse: (path: string) => ipcRenderer.invoke('parse:parse', path),
-    onChunk: (
+    verify: (path: string) => ipcRenderer.invoke('parse:verify', path),
+    parse: (
+      path: string,
+      session: number,
       chunk: (data: number) => void,
       doneCB: (code: number) => void
     ) => {
@@ -63,12 +65,14 @@ contextBridge.exposeInMainWorld('parse', {
         doneCB(code);
         ipcRenderer.removeListener('parse:chunk', chunkCB);
       });
+      ipcRenderer.invoke('parse:parse', path, session);
     },
   },
 });
 
 contextBridge.exposeInMainWorld('session', {
   ipcRenderer: {
+    getFileSize: () => ipcRenderer.invoke('session:getFileSize'),
     create: (model: SessionModelInputType) =>
       ipcRenderer.invoke('session:create', model),
     edit: (model: SessionModelType) =>

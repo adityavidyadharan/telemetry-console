@@ -41,7 +41,15 @@ ipcMain.handle('mappings:updateMappingFromFile', async (_event, ...args) => {
 });
 
 ipcMain.handle('parse:parse', async (_event, ...args) => {
-  return new ParseService().parse(args[0]);
+  return new ParseService().parse(args[0], args[1]);
+});
+
+ipcMain.handle('parse:verify', async (_event, ...args) => {
+  return new ParseService().verify(args[0]);
+});
+
+ipcMain.handle('session:getFileSize', async () => {
+  return new SessionService().getFileSize();
 });
 
 ipcMain.handle('session:create', async (_event, ...args) => {

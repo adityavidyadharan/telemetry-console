@@ -5,6 +5,7 @@ import {
   SessionModelType,
 } from '../main/data/models/SessionModel';
 import { Mapping } from '../main/data/service/MappingService';
+import { FileVerification } from '../main/data/service/ParseService';
 import { Channels } from '../main/preload';
 
 declare global {
@@ -38,12 +39,18 @@ declare global {
     };
     parse: {
       ipcRenderer: {
-        parse(path: string): Promise<string>;
-        onChunk(chunk: (data: number) => void, doneCB: () => void): void;
+        verify(path: string): Promise<FileVerification>;
+        parse(
+          path: string,
+          session: number,
+          chunk: (data: number) => void,
+          doneCB: () => void
+        ): Promise<void>;
       };
     };
     session: {
       ipcRenderer: {
+        getFileSize(): Promise<number>;
         create(session: SessionModelInputType): Promise<void>;
         edit(session: SessionModelType): Promise<void>;
         delete(id: number): Promise<void>;
