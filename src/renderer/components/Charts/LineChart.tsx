@@ -24,6 +24,22 @@ const LineChart = ({
 }: ILineChartProps) => {
   const [data, setData] = useState<Record<string, DataPoints> | undefined>();
 
+  const getColor = (index: number) => {
+    const colors = [
+      '#1f77b4',
+      '#ff7f0e',
+      '#2ca02c',
+      '#d62728',
+      '#9467bd',
+      '#8c564b',
+      '#e377c2',
+      '#7f7f7f',
+      '#bcbd22',
+      '#17becf',
+    ];
+    return colors[index % colors.length];
+  };
+
   useEffect(() => {
     const getData = async () => {
       setLoading(true);
@@ -57,9 +73,10 @@ const LineChart = ({
     <div>
       <Plot
         className="line-chart"
-        data={activeLabels.map((label) => {
+        data={activeLabels.map((label, idx) => {
           return {
-            line: { color: 'red' },
+            name: label,
+            line: { color: getColor(idx) },
             mode: 'lines',
             type: 'scatter',
             x: data?.[label]?.times,
@@ -74,30 +91,6 @@ const LineChart = ({
       />
     </div>
   );
-  // return (
-  //   <div>
-  //     <Plot
-  //       className="line-chart"
-  //       data={[
-  //         {
-  //           line: { color: 'red' },
-  //           mode: 'lines',
-  //           type: 'scatter',
-  //           x: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
-  //           y: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
-  //         },
-  //         {
-  //           line: { color: 'blue' },
-  //           mode: 'lines',
-  //           type: 'scatter',
-  //           x: [9, 8, 7, 6, 5, 4, 3, 2, 1, 0],
-  //           y: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
-  //         },
-  //       ]}
-  //       layout={{ width: 500, height: 500, title }}
-  //     />
-  //   </div>
-  // );
 };
 
 export default LineChart;
