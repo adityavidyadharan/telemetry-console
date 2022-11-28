@@ -4,11 +4,12 @@ import {
   Column,
   Index,
   ManyToOne,
+  JoinColumn,
 } from 'typeorm';
 import SessionEntity from './SessionEntity';
 
 @Entity({ name: 'Data' })
-@Index(['message', 'label'])
+@Index(['session', 'message', 'label'])
 class DataEntity {
   @PrimaryGeneratedColumn()
   index: number;
@@ -37,7 +38,13 @@ class DataEntity {
   @ManyToOne(() => SessionEntity, (session) => session.data, {
     onDelete: 'CASCADE',
   })
+  @JoinColumn({
+    name: 'sessionId',
+  })
   session: SessionEntity;
+
+  @Column()
+  sessionId: number;
 }
 
 export default DataEntity;

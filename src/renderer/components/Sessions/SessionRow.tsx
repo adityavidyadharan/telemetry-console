@@ -22,6 +22,7 @@ const SessionRow = ({
 
   const selectSession = async (id: number) => {
     await window.session.ipcRenderer.select(id);
+    navigate('/charts');
   };
 
   const uploadSession = async (id: number) => {
